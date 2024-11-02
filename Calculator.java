@@ -8,7 +8,7 @@ public class Calculator implements ActionListener{
 	JTextField textfield;
 	JButton[] numberButtons = new JButton[10];
 	JButton[] functionButtons = new JButton[10];
-	JButton addButton,subButton,mulButton,divButton;
+	JButton addButton,subButton,mulButton,divButton,expoButton;
 	JButton decButton, equButton, delButton, clrButton, negButton;
 	JPanel panel;
 	Font myFont = new Font("Ink Free",Font.BOLD,30);
@@ -68,7 +68,7 @@ public class Calculator implements ActionListener{
 		
 		panel = new JPanel();
 		panel.setBounds(50, 100, 300, 300);
-		panel.setLayout(new GridLayout(5,5,10,10)); // Add more rows an clumns to accomodate the new buttons
+		panel.setLayout(new GridLayout(5,5,10,10)); // Add more rows and columns to accommodate the new buttons
 
 		panel.add(numberButtons[1]);
 		panel.add(numberButtons[2]);
@@ -174,4 +174,3 @@ public class Calculator implements ActionListener{
 	}
 }
 // Have a Wonderful day.
-
