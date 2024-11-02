@@ -7,7 +7,7 @@ public class Calculator implements ActionListener{
 	JFrame frame;
 	JTextField textfield;
 	JButton[] numberButtons = new JButton[10];
-	JButton[] functionButtons = new JButton[9];
+	JButton[] functionButtons = new JButton[10];
 	JButton addButton,subButton,mulButton,divButton;
 	JButton decButton, equButton, delButton, clrButton, negButton;
 	JPanel panel;
@@ -19,7 +19,7 @@ public class Calculator implements ActionListener{
 		
 		frame = new JFrame("Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(420, 550);
+		frame.setSize(450, 600);//Increased frame size
 		frame.setLayout(null);
 		
 		textfield = new JTextField();
@@ -36,6 +36,7 @@ public class Calculator implements ActionListener{
 		delButton = new JButton("Del");
 		clrButton = new JButton("Clr");
 		negButton = new JButton("(-)");
+		expoButton = new JButton("^");
 		
 		functionButtons[0] = addButton;
 		functionButtons[1] = subButton;
@@ -46,8 +47,9 @@ public class Calculator implements ActionListener{
 		functionButtons[6] = delButton;
 		functionButtons[7] = clrButton;
 		functionButtons[8] = negButton;
+		functionButtons[9] = expoButton;
 		
-		for(int i =0;i<9;i++) {
+		for(int i =0;i<10;i++) {
 			functionButtons[i].addActionListener(this);
 			functionButtons[i].setFont(myFont);
 			functionButtons[i].setFocusable(false);
@@ -66,7 +68,7 @@ public class Calculator implements ActionListener{
 		
 		panel = new JPanel();
 		panel.setBounds(50, 100, 300, 300);
-		panel.setLayout(new GridLayout(4,4,10,10));
+		panel.setLayout(new GridLayout(5,5,10,10)); // Add more rows an clumns to accomodate the new buttons
 
 		panel.add(numberButtons[1]);
 		panel.add(numberButtons[2]);
@@ -84,6 +86,7 @@ public class Calculator implements ActionListener{
 		panel.add(numberButtons[0]);
 		panel.add(equButton);
 		panel.add(divButton);
+		panel.add(expoButton); //Added the expo button to the panel.
 		
 		frame.add(panel);
 		frame.add(negButton);
@@ -125,22 +128,30 @@ public class Calculator implements ActionListener{
 			operator ='/';
 			textfield.setText("");
 		}
+		if(e.getSource()==expoButton) {
+			num1 = Double.parseDouble(textfield.getText());
+			operator='^';
+			textfield.setText("");
+		}
 		if(e.getSource()==equButton) {
 			num2=Double.parseDouble(textfield.getText());
-			
+
 			switch(operator) {
-			case'+':
-				result=num1+num2;
-				break;
-			case'-':
-				result=num1-num2;
-				break;
-			case'*':
-				result=num1*num2;
-				break;
-			case'/':
-				result=num1/num2;
-				break;
+				case'+':
+					result=num1+num2;
+					break;
+				case'-':
+					result=num1-num2;
+					break;
+				case'*':
+					result=num1*num2;
+					break;
+				case'/':
+					result=num1/num2;
+					break;
+				case'^':
+					result= Math.pow(num1,num2);
+					break;
 			}
 			textfield.setText(String.valueOf(result));
 			num1=result;
