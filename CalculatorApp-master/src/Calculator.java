@@ -160,11 +160,12 @@ public class Calculator implements ActionListener {
             operator = '√';
             textField.setText("");
             if (num1 < 0) {
-                throw new ArithmeticException("Error: square root of negative number");
+                textField.setText("Invalid square root of a negative");
+            } else {
+                result = Math.sqrt(num1);
+                textField.setText(String.valueOf(result));
+                num1 = result;
             }
-            result = Math.sqrt(num1);
-            textField.setText(String.valueOf(result));
-            num1 = result;
         }
 
         if (e.getSource() == percButton) {
@@ -188,10 +189,10 @@ public class Calculator implements ActionListener {
             num2 = Double.parseDouble(textField.getText());
 
             if (operator == '/' && num2 == 0) {
-                throw new ArithmeticException("Error: division by zero");
+                textField.setText("Error: Division by zero");
             }
 
-            switch(operator) {
+            switch (operator) {
                 case '+':
                     result = num1 + num2;
                     break;
@@ -217,17 +218,16 @@ public class Calculator implements ActionListener {
             textField.setText("");
         }
         if (e.getSource() == delButton) {
-            String string = textField.getText();
-            textField.setText("");
-            for (int i = 0; i < string.length() - 1; i++) {
-                textField.setText(textField.getText() + string.charAt(i));
+            String text = textField.getText();
+            if (!text.isEmpty()) {
+                textField.setText(text.substring(0, text.length() - 1)); // Remove the last character
             }
-        }
 
-        if (e.getSource() == negButton) {
-            double temp = Double.parseDouble(textField.getText());
-            temp *= -1;
-            textField.setText(String.valueOf(temp));
+            if (e.getSource() == negButton) {
+                double temp = Double.parseDouble(textField.getText());
+                temp *= -1;
+                textField.setText(String.valueOf(temp));
+            }
         }
     }
 }

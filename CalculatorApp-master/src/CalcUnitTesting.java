@@ -13,16 +13,19 @@ public class CalcUnitTesting {
 
     @Before
     public void init(){
-        new Calculator();
+        os = new Calculator();
     }
 
     private void setNumber(double number) {
-        String numStr = String.valueOf(number);
-        for (char digit : numStr.toCharArray()) {
-            os.actionPerformed(new ActionEvent(os.numberButtons[Character.getNumericValue(digit)], ActionEvent.ACTION_PERFORMED, ""));
+        if (number == (int) number) {
+            os.textField.setText(String.valueOf((int) number)); // Set as an integer if there's no decimal
+        } else {
+            os.textField.setText(String.valueOf(number));       // Set as double otherwise
         }
     }
 
+
+    //Tests addition button
     @Test
     public void testAddition() {
         setNumber(10);
@@ -32,6 +35,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Addition failed", 15.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests subtraction button
     @Test
     public void testSubtraction() {
         setNumber(10);
@@ -41,6 +46,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Subtraction failed", 5.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests multiplication button
     @Test
     public void testMultiplication() {
         setNumber(10);
@@ -50,6 +57,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Multiplication failed", 50.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests division button
     @Test
     public void testDivision() {
         setNumber(10);
@@ -59,6 +68,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Division failed", 2.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests division by zero
     @Test
     public void testDivisionByZero() {
         setNumber(10);
@@ -68,6 +79,8 @@ public class CalcUnitTesting {
         Assert.assertTrue("Division by zero did not handle properly", os.textField.getText().equals("Infinity") || os.textField.getText().equals("NaN"));
     }
 
+
+    //Tests exponent button
     @Test
     public void testExponentiation() {
         setNumber(2);
@@ -77,6 +90,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Exponentiation failed", 8.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests square root button
     @Test
     public void testSquareRoot() {
         setNumber(16);
@@ -84,6 +99,8 @@ public class CalcUnitTesting {
         Assert.assertEquals("Square root failed", 4.0, Double.parseDouble(os.textField.getText()), 0.001);
     }
 
+
+    //Tests square root for a negative number
     @Test
     public void testSquareRootOfNegative() {
         setNumber(-16);
@@ -91,7 +108,50 @@ public class CalcUnitTesting {
         Assert.assertTrue("Square root of negative number did not handle properly", os.textField.getText().equals("NaN") || os.textField.getText().contains("Invalid"));
     }
 
-    // Additional tests can be added for other functionality, such as clear, delete, or negative toggling.
+
+    //Tests Clear button
+    @Test
+    public void testClear() {
+        setNumber(123);
+        os.actionPerformed(new ActionEvent(os.clrButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Clear failed", "", os.textField.getText());
+    }
+
+
+    // Tests delete button
+    @Test
+    public void testDelete() {
+        setNumber(12345);
+        os.actionPerformed(new ActionEvent(os.delButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Delete failed", "1234", os.textField.getText());
+    }
+
+
+    //Tests negative button
+    @Test
+    public void testNegate() {
+        setNumber(123);
+        os.actionPerformed(new ActionEvent(os.negButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Negation failed", "-123.0", os.textField.getText());
+    }
+
+
+    //Tests percentage button
+    @Test
+    public void testPercent(){
+        setNumber(56);
+        os.actionPerformed(new ActionEvent(os.percButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Percentage failed", "0.56", os.textField.getText());
+    }
+
+
+    //Tests factorial button
+    @Test
+    public void testFact(){
+        setNumber(5);
+        os.actionPerformed(new ActionEvent(os.factButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Factorial failed", "120.0", os.textField.getText());
+    }
 
 
 }
