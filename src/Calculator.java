@@ -48,8 +48,8 @@ public class Calculator implements ActionListener {
         functionButtons[6] = delButton;
         functionButtons[7] = clrButton;
         functionButtons[8] = negButton;
-        functionButtons[9] = expoButton;
         functionButtons[10] = sqrtButton;
+        functionButtons[9] = expoButton;
         functionButtons[11] = percButton;
         functionButtons[12] = factButton;
 
@@ -89,8 +89,8 @@ public class Calculator implements ActionListener {
         panel.add(numberButtons[0]);
         panel.add(equButton);
         panel.add(divButton);
-        panel.add(expoButton);
         panel.add(sqrtButton);
+        panel.add(expoButton);
         panel.add(percButton);
         panel.add(factButton);
 
@@ -145,14 +145,14 @@ public class Calculator implements ActionListener {
             operator = '*';
             textField.setText("");
         }
-        if (e.getSource() == divButton) {
-            num1 = Double.parseDouble(textField.getText());
-            operator = '/';
-            textField.setText("");
-        }
         if (e.getSource() == expoButton) {
             num1 = Double.parseDouble(textField.getText());
             operator = '^';
+            textField.setText("");
+        }
+        if (e.getSource() == divButton) {
+            num1 = Double.parseDouble(textField.getText());
+            operator = '/';
             textField.setText("");
         }
         if (e.getSource() == sqrtButton) {
@@ -202,11 +202,11 @@ public class Calculator implements ActionListener {
                 case '*':
                     result = num1 * num2;
                     break;
-                case '/':
-                    result = num1 / num2;
-                    break;
                 case '^':
                     result = Math.pow(num1, num2);
+                    break;
+                case '/':
+                    result = num1 / num2;
                     break;
             }
 
