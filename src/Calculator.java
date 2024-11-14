@@ -160,11 +160,12 @@ public class Calculator implements ActionListener {
             operator = '√';
             textField.setText("");
             if (num1 < 0) {
-                throw new ArithmeticException("Error: square root of negative number");
+                textField.setText("Invalid square root of a negative");
+            } else {
+                result = Math.sqrt(num1);
+                textField.setText(String.valueOf(result));
+                num1 = result;
             }
-            result = Math.sqrt(num1);
-            textField.setText(String.valueOf(result));
-            num1 = result;
         }
 
         if (e.getSource() == percButton) {
@@ -188,7 +189,7 @@ public class Calculator implements ActionListener {
             num2 = Double.parseDouble(textField.getText());
 
             if (operator == '/' && num2 == 0) {
-                throw new ArithmeticException("Error: division by zero");
+                textField.setText("Error: Division by zero");
             }
 
             switch(operator) {
@@ -227,7 +228,7 @@ public class Calculator implements ActionListener {
         if (e.getSource() == negButton) {
             double temp = Double.parseDouble(textField.getText());
             temp *= -1;
-            textField.setText(String.valueOf(temp));
+            textField.setText(String.format("%.1f", temp));
         }
     }
 }
