@@ -1,6 +1,6 @@
 Things to do:
 
-Add new UI buttons for 3 operations
-Add the 3 new features
-Do white-box testing - unit testing, integration testing
-Do black-box testing - boundary analysis, equivalence partitioning
+1. Add new UI buttons for 3 operations
+2. Add the 3 new features
+3. Do white-box testing - unit testing, integration testing
+4. Do black-box testing - boundary analysis, equivalence partitioning
