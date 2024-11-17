@@ -69,17 +69,6 @@ public class UnitTesting {
     }
 
 
-    //Tests division by zero
-    @Test
-    public void testDivisionByZero() {
-        setNumber(10);
-        os.actionPerformed(new ActionEvent(os.divButton, ActionEvent.ACTION_PERFORMED, ""));
-        setNumber(0);
-        os.actionPerformed(new ActionEvent(os.equButton, ActionEvent.ACTION_PERFORMED, ""));
-        Assert.assertTrue("Division by zero did not handle properly", os.textField.getText().equals("Infinity") || os.textField.getText().equals("NaN"));
-    }
-
-
     //Tests exponent button
     @Test
     public void testExponentiation() {
@@ -97,15 +86,6 @@ public class UnitTesting {
         setNumber(16);
         os.actionPerformed(new ActionEvent(os.sqrtButton, ActionEvent.ACTION_PERFORMED, ""));
         Assert.assertEquals("Square root failed", 4.0, Double.parseDouble(os.textField.getText()), 0.001);
-    }
-
-
-    //Tests square root for a negative number
-    @Test
-    public void testSquareRootOfNegative() {
-        setNumber(-16);
-        os.actionPerformed(new ActionEvent(os.sqrtButton, ActionEvent.ACTION_PERFORMED, ""));
-        Assert.assertTrue("Square root of negative number did not handle properly", os.textField.getText().equals("NaN") || os.textField.getText().contains("Invalid"));
     }
 
 
@@ -152,6 +132,53 @@ public class UnitTesting {
         os.actionPerformed(new ActionEvent(os.factButton, ActionEvent.ACTION_PERFORMED, ""));
         Assert.assertEquals("Factorial failed", "120.0", os.textField.getText());
     }
+
+
+    //Tests decimal button
+    @Test
+    public void testDec(){
+        setNumber(5);
+        os.actionPerformed(new ActionEvent(os.decButton, ActionEvent.ACTION_PERFORMED, ""));
+        os.textField.setText(os.textField.getText().concat("1"));
+        Assert.assertEquals("Decimal failed", "5.1", os.textField.getText());
+    }
+
+
+
+
+
+    // Edge cases
+
+
+    //Tests square root for a negative number
+    @Test
+    public void testSquareRootOfNegative() {
+        setNumber(-16);
+        os.actionPerformed(new ActionEvent(os.sqrtButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertTrue("Square root of negative number did not handle properly", os.textField.getText().equals("NaN") || os.textField.getText().contains("Invalid"));
+    }
+
+
+    //Tests division by zero
+    @Test
+    public void testDivisionByZero() {
+        setNumber(10);
+        os.actionPerformed(new ActionEvent(os.divButton, ActionEvent.ACTION_PERFORMED, ""));
+        setNumber(0);
+        os.actionPerformed(new ActionEvent(os.equButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertTrue("Division by zero did not handle properly", os.textField.getText().equals("Infinity") || os.textField.getText().equals("NaN"));
+    }
+
+
+    //Tests square root of zero
+    @Test
+    public void testSquareRootOfZero() {
+        setNumber(0);
+        os.actionPerformed(new ActionEvent(os.sqrtButton, ActionEvent.ACTION_PERFORMED, ""));
+        Assert.assertEquals("Square root of zero failed", "0.0", os.textField.getText());
+    }
+
+
 
 
 }
