@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestCalculatorFunctional" tests="15" skipped="0" failures="0" errors="0" timestamp="2024-11-21T18:53:17" hostname="Aias-MacBook-Air.local" time="1.701">
+  <properties/>
+  <testcase name="testSquareRootOfZero" classname="TestCalculatorFunctional" time="0.99"/>
+  <testcase name="testDec" classname="TestCalculatorFunctional" time="0.035"/>
+  <testcase name="testClear" classname="TestCalculatorFunctional" time="0.019"/>
+  <testcase name="testFact" classname="TestCalculatorFunctional" time="0.032"/>
+  <testcase name="testPercent" classname="TestCalculatorFunctional" time="0.052"/>
+  <testcase name="testMultiplication" classname="TestCalculatorFunctional" time="0.036"/>
+  <testcase name="testAddition" classname="TestCalculatorFunctional" time="0.067"/>
+  <testcase name="testSquareRootOfNegative" classname="TestCalculatorFunctional" time="0.066"/>
+  <testcase name="testDivisionByZero" classname="TestCalculatorFunctional" time="0.067"/>
+  <testcase name="testDivision" classname="TestCalculatorFunctional" time="0.05"/>
+  <testcase name="testDelete" classname="TestCalculatorFunctional" time="0.067"/>
+  <testcase name="testSquareRoot" classname="TestCalculatorFunctional" time="0.048"/>
+  <testcase name="testExponentiation" classname="TestCalculatorFunctional" time="0.051"/>
+  <testcase name="testNegate" classname="TestCalculatorFunctional" time="0.05"/>
+  <testcase name="testSubtraction" classname="TestCalculatorFunctional" time="0.067"/>
+  <system-out><![CDATA[Setting number: 0.0
+Setting number: 5.0
+Setting number: 123.0
+Setting number: 5.0
+Setting number: 56.0
+Setting number: 10.0
+Setting number: 5.0
+Setting number: 10.0
+Setting number: 5.0
+Setting number: -16.0
+Setting number: 10.0
+Setting number: 0.0
+Setting number: 10.0
+Setting number: 5.0
+Setting number: 12345.0
+Setting number: 16.0
+Setting number: 2.0
+Setting number: 3.0
+Setting number: 123.1
+Setting number: 10.0
+Setting number: 5.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
